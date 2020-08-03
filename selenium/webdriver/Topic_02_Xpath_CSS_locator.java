@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 
-public class Topic_02_locator {
+public class Topic_02_Xpath_CSS_locator {
 	//khai bao bien driver (instance = the hien or dai dien)
 	WebDriver driver;
 
