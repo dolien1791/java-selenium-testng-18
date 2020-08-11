@@ -1,6 +1,6 @@
 package javaTester;
 
-public class Topics_01 {
+public class Topic_01 {
 
 	public static void main(String[] args) {
 		System.out.println(showName());
