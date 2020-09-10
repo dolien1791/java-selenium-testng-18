@@ -87,6 +87,8 @@ public class Topic_06_textArea {
 
 	@Test
 	public void TC_03_New_Customer() {
+		
+		//click new customer
 		driver.findElement(By.xpath("//a[text()='New Customer']")).click();
 		driver.findElement(customerNameTextbox).sendKeys(name);
 		driver.findElement(dateOfBirthTextbox).sendKeys(dateOfBirth);

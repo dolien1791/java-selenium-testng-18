@@ -104,7 +104,7 @@ public class Topic_10_User_Interaction {
 	  Assert.assertEquals(allItemsSelected.size(), 4);
   }
   
-  @Test 
+
   public void TC_04_double_click() {
 	  driver.get("https://automationfc.github.io/basic-form/index.html");
 	  element = driver.findElement(By.xpath("//button[text()='Double click me']"));
@@ -112,11 +112,56 @@ public class Topic_10_User_Interaction {
 	  Assert.assertTrue(driver.findElement(By.xpath("//p[@id='demo' and text()='Hello Automation Guys!']")).isDisplayed());
   }
   
-  @Test 
-  public void TC_05_Web_Element() {
+  
+  public void TC_05_right_click() {
+	  driver.get("http://swisnl.github.io/jQuery-contextMenu/demo.html");
 	  
+	  //right click to button
+	  driver.findElement(By.xpath("//span[text()='right click me']"));
+	  action.contextClick(element).perform();
+	  
+	  //hover to Quit
+	  element = driver.findElement(By.cssSelector(".context-menu-icon-quit"));
+	  action.moveToElement(element).perform();
+	  
+	  //verify 'Quit' has hover + visible status
+	  String quitClassAttribute = element.getAttribute("class");
+	  System.out.println(quitClassAttribute);
+	  
+	  Assert.assertTrue(quitClassAttribute.contains("context-menu-hover"));
+	  Assert.assertTrue(quitClassAttribute.contains("context-menu-visible"));
+	  
+	  //is display
+	  Assert.assertTrue(driver.findElement(By.cssSelector(".context-menu-icon-quit.context-menu-visible.context-menu-hover")).isDisplayed());
+  }
+	  
+  
+  @Test 
+  public void TC_06_Drag_drop_html4() {
+	  driver.get("https://demos.telerik.com/kendo-ui/dragdrop/angular");
+	  
+	  WebElement sourceCircle = driver.findElement(By.cssSelector("#draggable"));
+	  WebElement targetCircle = driver.findElement(By.cssSelector("#droptarget"));
+	  
+	  action.dragAndDrop(sourceCircle, targetCircle).perform();
+	  sleepInSecond(2);
+	  
+	  Assert.assertEquals(targetCircle.getText(), "You did great!");
   }
   
+  
+  public void TC_07_Drag_drop_html5() {
+	 driver.get("https://automationfc.github.io/drag-drop-html5/");
+	 
+	 WebElement source = driver.findElement(By.cssSelector("#draggable"));
+	 WebElement target = driver.findElement(By.cssSelector("#droptarget"));
+	  
+	 action.dragAndDrop(source, target).perform();
+	 sleepInSecond(2);
+	  
+	 Assert.assertEquals(target.getText(), "You did great!");
+	 
+  }
   
   @AfterClass 
 	public void afterClass() {
